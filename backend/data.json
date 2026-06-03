@@ -1,0 +1,56 @@
+const fs = require("fs");
+
+const categories = [
+  "Pizza",
+  "Burger",
+  "Biryani",
+  "Pasta",
+  "Dessert",
+  "Drinks",
+  "South Indian",
+  "North Indian",
+  "Chinese",
+  "Snacks"
+];
+
+const foodNames = {
+  Pizza: ["Margherita", "Farmhouse", "Veg Supreme", "Cheese Burst"],
+  Burger: ["Veg Burger", "Chicken Burger", "Paneer Burger", "Zinger Burger"],
+  Biryani: ["Chicken Biryani", "Mutton Biryani", "Veg Biryani", "Egg Biryani"],
+  Pasta: ["White Sauce Pasta", "Red Sauce Pasta", "Cheese Pasta", "Veg Pasta"],
+  Dessert: ["Ice Cream", "Brownie", "Cake", "Donut"],
+  Drinks: ["Mango Juice", "Lemon Juice", "Milkshake", "Cold Coffee"],
+  "South Indian": ["Dosa", "Idli", "Poori", "Pongal"],
+  "North Indian": ["Butter Naan", "Paneer Butter Masala", "Chole Bhature", "Dal Makhani"],
+  Chinese: ["Noodles", "Fried Rice", "Manchurian", "Spring Roll"],
+  Snacks: ["French Fries", "Samosa", "Sandwich", "Puffs"]
+};
+
+const foods = [];
+
+for (let i = 1; i <= 450; i++) {
+  let category =
+    categories[Math.floor(Math.random() * categories.length)];
+
+  let name =
+    foodNames[category][
+      Math.floor(Math.random() * foodNames[category].length)
+    ];
+
+  foods.push({
+    id: i,
+    name: `${name} ${i}`,
+    category: category,
+    price: Math.floor(Math.random() * 400) + 50,
+    rating: (Math.random() * 2 + 3).toFixed(1),
+    image: `https://picsum.photos/200?random=${i}`,
+    description: `Delicious ${name} for food lovers`
+  });
+}
+
+fs.writeFileSync(
+  "foods.json",
+  JSON.stringify(foods, null, 2)
+);
+
+console.log("450 food items generated successfully!");
