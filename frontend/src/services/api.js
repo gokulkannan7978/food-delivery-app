@@ -1,8 +1,7 @@
 // src/services/api.js
 // Central place for ALL backend API calls.
 // Change BASE_URL here if your backend moves to a different host.
-
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://food-delivery-app-85g5.onrender.com/api";
 
 // ─── Helper ───────────────────────────────────────────────────────────────────
 let authToken = null;
